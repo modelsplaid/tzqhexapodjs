@@ -279,17 +279,17 @@ class Linkage {
         const { alpha, beta, gamma } = pose
         const pointNameIds = this._buildPointNameIds()
         const localPoints = this._computePointsWrtBodyContact(beta, gamma)
-        console.log("---tzq localPoints: ")
-        console.log(localPoints)
-        console.log("---tzq localPoints")
+        //console.log("---tzq localPoints: ")
+        //console.log(localPoints)
+        //console.log("---tzq localPoints")
         // prettier-ignore
         const allPointsList = this._computePointsWrtHexapodCog(
             alpha, originPoint, localPoints, pointNameIds
         )
 
-        console.log("---tzq allPointsList: ")
-        console.log(allPointsList)
-        console.log("---tzq allPointsList")
+        //console.log("---tzq allPointsList: ")
+        //console.log(allPointsList)
+        //console.log("---tzq allPointsList")
         return allPointsList
     }
 }

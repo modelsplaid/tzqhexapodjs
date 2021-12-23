@@ -29,7 +29,7 @@ const cases =
                 ry: 0,
                 legStance: 0,
                 hipStance: 25,
-                stepCount: 5,
+                stepCount: 1,
                 hipSwing: 25,
                 liftSwing: 40,
             },
@@ -40,14 +40,14 @@ const cases =
 
 
 
-    const stepCount = cases.params.gaitParams.stepCount
-
+   // var stepCount = cases.params.gaitParams.stepCount
+   // cases.params.gaitParams.stepCount = 1
     const sequence1 = getWalkSequence(
          cases.params.dimensions,
          cases.params.gaitParams
     )
-
-
+console.log("sequence1: ")
+console.log(sequence1)
 /*testSequence(sequence1, stepCount * 4)
 
     const sequence2 = getWalkSequence(
