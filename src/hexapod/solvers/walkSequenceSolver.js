@@ -49,9 +49,15 @@ const getWalkSequence = (
     if (!ikSolver.foundSolution || ikSolver.hasLegsOffGround) {
         return null
     }
+    console.log("---------ikSolver.pose:")
+    console.log(ikSolver.pose)
+
 
     const { hipSwing, liftSwing, stepCount } = params
     const [aHipSwing, aLiftSwing] = [Math.abs(hipSwing), Math.abs(liftSwing)]
+
+    console.log("---------aHipSwing:")
+    console.log(aHipSwing)
 
     const hipSwings =
         walkMode === "rotating"

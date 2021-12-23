@@ -46,8 +46,11 @@ const cases =
          cases.params.dimensions,
          cases.params.gaitParams
     )
-console.log("sequence1: ")
+console.log("------sequence1: ")
 console.log(sequence1)
+console.log("------cases.params.dimensions:")
+console.log(cases.params.dimensions)
+
 /*testSequence(sequence1, stepCount * 4)
 
     const sequence2 = getWalkSequence(
