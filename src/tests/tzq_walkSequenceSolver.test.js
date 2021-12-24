@@ -29,7 +29,7 @@ const cases =
                 ry: 0,
                 legStance: 0,
                 hipStance: 25,
-                stepCount: 1,
+                stepCount: 10,
                 hipSwing: 25,
                 liftSwing: 40,
             },

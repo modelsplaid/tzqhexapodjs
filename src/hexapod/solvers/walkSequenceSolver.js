@@ -303,6 +303,8 @@ const buildTripodSequences = (startPose, aLiftSwing, hipSwings, stepCount, walkM
         liftGammaSeqs[legPosition] = buildSequence(gamma, -aLiftSwing / 2, stepCount)
     })
 
+    console.log("||||||||||||||liftBetaSeqs: ")
+    console.log(liftBetaSeqs)
     return {
         forwardAlphaSeqs,
         liftBetaSeqs,
