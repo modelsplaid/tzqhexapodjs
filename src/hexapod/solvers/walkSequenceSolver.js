@@ -49,15 +49,15 @@ const getWalkSequence = (
     if (!ikSolver.foundSolution || ikSolver.hasLegsOffGround) {
         return null
     }
-    console.log("---------ikSolver.pose:")
-    console.log(ikSolver.pose)
+    //console.log("---------ikSolver.pose:")
+    //console.log(ikSolver.pose)
 
 
     const { hipSwing, liftSwing, stepCount } = params
     const [aHipSwing, aLiftSwing] = [Math.abs(hipSwing), Math.abs(liftSwing)]
 
-    console.log("---------aHipSwing:")
-    console.log(aHipSwing)
+    //console.log("---------aHipSwing:")
+    //console.log(aHipSwing)
 
     const hipSwings =
         walkMode === "rotating"
@@ -121,6 +121,14 @@ const tripodSequence = (pose, aLiftSwing, hipSwings, stepCount, walkMode) => {
         stepCount,
         walkMode
     )
+    console.log("----------forwardAlphaSeqs: ")
+    console.log(forwardAlphaSeqs)
+    console.log("----------liftBetaSeqs: ")
+    console.log(liftBetaSeqs)
+    console.log("----------liftGammaSeqs: ")
+    console.log(liftGammaSeqs)
+
+
 
     const doubleStepCount = 2 * stepCount
 
@@ -136,6 +144,12 @@ const tripodSequence = (pose, aLiftSwing, hipSwings, stepCount, walkMode) => {
         liftBetaSeqs,
         doubleStepCount
     )
+
+
+    //console.log("|||tripodA: ")
+    //console.log(tripodA)
+    //console.log("|||tripodB: ")
+    //console.log(tripodB)
 
     return { ...tripodA, ...tripodB }
 }
@@ -303,8 +317,6 @@ const buildTripodSequences = (startPose, aLiftSwing, hipSwings, stepCount, walkM
         liftGammaSeqs[legPosition] = buildSequence(gamma, -aLiftSwing / 2, stepCount)
     })
 
-    console.log("||||||||||||||liftBetaSeqs: ")
-    console.log(liftBetaSeqs)
     return {
         forwardAlphaSeqs,
         liftBetaSeqs,
@@ -352,7 +364,8 @@ const fillArray = (value, len) => {
         return []
     }
     let a = [value]
-
+    console.log("||||||||||||||a:")
+    console.log(a)
     while (a.length * 2 <= len) {
         a = a.concat(a)
     }
@@ -360,6 +373,7 @@ const fillArray = (value, len) => {
     if (a.length < len) {
         a = a.concat(a.slice(0, len - a.length))
     }
+    console.log(a)
 
     return a
 }

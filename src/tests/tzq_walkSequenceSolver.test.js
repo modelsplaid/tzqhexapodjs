@@ -29,9 +29,9 @@ const cases =
                 ry: 0,
                 legStance: 0,
                 hipStance: 25,
-                stepCount: 10,
+                stepCount: 2,
                 hipSwing: 25,
-                liftSwing: 40,
+                liftSwing: 20,
             },
         },
         result: { answer: true },
@@ -46,10 +46,10 @@ const cases =
          cases.params.dimensions,
          cases.params.gaitParams
     )
-console.log("------sequence1: ")
-console.log(sequence1)
-console.log("------cases.params.dimensions:")
-console.log(cases.params.dimensions)
+//console.log("------sequence1: ")
+//console.log(sequence1)
+//console.log("------cases.params.dimensions:")
+//console.log(cases.params.dimensions)
 
 /*testSequence(sequence1, stepCount * 4)
 
