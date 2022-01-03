@@ -39,12 +39,13 @@ const cases =
     }
 
 
-
+  var  gaitType="ripple"
    // var stepCount = cases.params.gaitParams.stepCount
    // cases.params.gaitParams.stepCount = 1
     const sequence1 = getWalkSequence(
          cases.params.dimensions,
-         cases.params.gaitParams
+         cases.params.gaitParams,
+	 gaitType
     )
    
 //console.log("------sequence1: ")
