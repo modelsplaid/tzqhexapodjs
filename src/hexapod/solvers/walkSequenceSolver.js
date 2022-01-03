@@ -183,6 +183,11 @@ const tripodASequence = (
             beta: betaSeq,
         }
 
+        console.log("----tripodASequence")
+        console.log(sequences)
+
+
+
         return sequences
     }, {})
 
@@ -364,8 +369,6 @@ const fillArray = (value, len) => {
         return []
     }
     let a = [value]
-    console.log("||||||||||||||a:")
-    console.log(a)
     while (a.length * 2 <= len) {
         a = a.concat(a)
     }
@@ -373,7 +376,7 @@ const fillArray = (value, len) => {
     if (a.length < len) {
         a = a.concat(a.slice(0, len - a.length))
     }
-    console.log(a)
+    //console.log(a)
 
     return a
 }
