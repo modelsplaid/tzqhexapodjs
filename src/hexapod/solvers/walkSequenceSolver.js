@@ -58,7 +58,7 @@ const getWalkSequence = (
 
     //console.log("---------aHipSwing:")
     //console.log(aHipSwing)
-
+    
     const hipSwings =
         walkMode === "rotating"
             ? getHipSwingRotate(aHipSwing)
@@ -129,28 +129,33 @@ const tripodSequence = (pose, aLiftSwing, hipSwings, stepCount, walkMode) => {
     console.log(liftGammaSeqs)
 
 
-
+    
     const doubleStepCount = 2 * stepCount
 
+    
     const tripodA = tripodASequence(
         forwardAlphaSeqs,
         liftGammaSeqs,
         liftBetaSeqs,
         doubleStepCount
     )
+    //console.log("tripodA sequence : ")
+    //console.log(tripodA)
+  
     const tripodB = tripodBSequence(
         forwardAlphaSeqs,
         liftGammaSeqs,
         liftBetaSeqs,
         doubleStepCount
     )
-
+    
+    console.log("---------------4")
 
     //console.log("|||tripodA: ")
     //console.log(tripodA)
-    //console.log("|||tripodB: ")
-    //console.log(tripodB)
-
+    console.log("|||tripodB: ")
+    console.log(tripodB)
+   
     return { ...tripodA, ...tripodB }
 }
 
@@ -235,11 +240,21 @@ right-middle  |-- b --|   1   |   2   |   3   |   4   |-- a --|
  * * */
 
 const rippleSequence = (startPose, aLiftSwing, hipSwings, stepCount) => {
+    
+    console.log("in ripple sequence")
+    	
     const legPositions = Object.keys(startPose)
 
+    console.log("startPose")
+    console.log(startPose)
+    console.log("legPositions:")
+    console.log(legPositions)
     let sequences = {}
     legPositions.forEach(position => {
-        const { alpha, beta, gamma } = startPose[position]
+        console.log("---position") 
+        console.log(position) 
+
+	const { alpha, beta, gamma } = startPose[position]
         const betaLift = buildSequence(beta, aLiftSwing, stepCount)
         const gammaLift = buildSequence(gamma, -aLiftSwing / 2, stepCount)
 
@@ -252,26 +267,34 @@ const rippleSequence = (startPose, aLiftSwing, hipSwings, stepCount) => {
         const bk2 = buildSequence(alpha + halfDelta, -halfDelta, stepCount)
         const bk3 = buildSequence(alpha, -halfDelta, stepCount)
         const bk4 = buildSequence(alpha - halfDelta, -halfDelta, stepCount)
-
+        
         // prettier-ignore
+        //	console.log("--- buildRippleLegSequence")
         sequences[position] = buildRippleLegSequence(
             position, betaLift, gammaLift, fw1, fw2, bk1, bk2, bk3, bk4
         )
+
+	//console.log("buildRippleLegSequence---")
     })
 
     return sequences
 }
 
 const buildRippleLegSequence = (position, bLift, gLift, fw1, fw2, bk1, bk2, bk3, bk4) => {
+   
+    //	console.log("1---")
     const stepCount = fw1.length
     const revGLift = gLift.slice().reverse()
     const revBLift = bLift.slice().reverse()
     const b0 = bLift[0]
     const g0 = gLift[0]
     // n stands for neutral
+	
+    //	console.log("3---")
     const bN = fillArray(b0, stepCount)
     const gN = fillArray(g0, stepCount)
 
+    //	console.log("---4")
     const alphaSeq = [fw1, fw2, bk1, bk2, bk3, bk4]
     const betaSeq = [bLift, revBLift, bN, bN, bN, bN]
     const gammaSeq = [gLift, revGLift, gN, gN, gN, gN]
@@ -285,6 +308,7 @@ const buildRippleLegSequence = (position, bLift, gLift, fw1, fw2, bk1, bk2, bk3,
         rightMiddle: 5,
     }
 
+    //	console.log("2---")
     return {
         alpha: modSequence(moduloMap[position], alphaSeq),
         beta: modSequence(moduloMap[position], betaSeq),
@@ -364,8 +388,8 @@ const fillArray = (value, len) => {
         return []
     }
     let a = [value]
-    console.log("||||||||||||||a:")
-    console.log(a)
+    //console.log("||||||||||||||a:")
+    //console.log(a)
     while (a.length * 2 <= len) {
         a = a.concat(a)
     }
@@ -373,7 +397,7 @@ const fillArray = (value, len) => {
     if (a.length < len) {
         a = a.concat(a.slice(0, len - a.length))
     }
-    console.log(a)
+    //console.log(a)
 
     return a
 }
