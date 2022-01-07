@@ -188,6 +188,11 @@ const tripodASequence = (
             beta: betaSeq,
         }
 
+        console.log("----tripodASequence")
+        console.log(sequences)
+
+
+
         return sequences
     }, {})
 
